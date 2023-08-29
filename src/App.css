@@ -138,7 +138,7 @@ body{
   /* display: flex;
   justify-content: center;
   height: 100vh; */
-  margin: 50px;
+  margin: 40px;
   text-align: center;
 }
 
@@ -148,4 +148,35 @@ body{
   gap: 20px;
   justify-content: center;
 }
+
+.pagination1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination1 button {
+  width: 40px;
+  height: 40px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: #eee;
+  border-color: #eee;
+}
+
+.pagination1 button.active {
+  font-weight: 900;
+  border-color: #101010;
+  background: #ffe400;
+  color: #101010;
+}
+
+
 

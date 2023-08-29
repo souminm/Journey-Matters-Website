@@ -1,0 +1,16 @@
+
+
+.login{
+    /* width: 300px;
+    height: min-content;
+    border-radius: 5px; */
+    height: 100vh;
+    padding:100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: lavenderblush;
+    flex-wrap: wrap;
+}
+

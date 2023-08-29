@@ -4,49 +4,33 @@ const Pagination = () => {
     const [userData,setUserData] = useState([]);
     const [currentPage,setCurrentPage] =useState(1);
     const [totalPages,setTotalPages] = useState(0);
+    const count =  Object.keys( data.stories ).length;
+    let pages = [];
+  
    
     useEffect(()=>{
       setUserData(data);
-      setTotalPages(Math.ceil(data.length/10));
+      setTotalPages(Math.ceil(count/10));
     },[])
 
 
-    //current page
-    const handlePageChange = (newPage) =>{
-      setCurrentPage(newPage);
-    }
-
-    const handleNextClick = () =>{
-       if(currentPage < totalPages){
-        setCurrentPage(currentPage+1);
-       }
-      }
-
-      const handlePrevClick = () =>{
-        if(currentPage > 1){
-         setCurrentPage(currentPage - 1);
-        }
-       }
-
-       const preDisabled = currentPage === 1;
-       const nextDisabled = currentPage===totalPages;
+      
 
        const itemsPerPage = 3;
        const startIndex = (currentPage -1) * itemsPerPage;
        const endIndex = startIndex +itemsPerPage;
+      // console.log( Object.keys( data.stories ).length ) ;
+       
+       for(let i =1;i<=Math.ceil(count/itemsPerPage);i++){
+        pages.push(i)
+      }
+     
     
     const itemsToDisplay = data.stories.slice(startIndex,endIndex);
-    console.log(itemsToDisplay);
-
-    // console.log(itemsToDisplay);
-    // const story_arr = [];
-    // for(var value of){
-    //     story_arr.push(value);
-    // }
-    // console.log(story_arr);
-    // console.log(userData.stories);
+ 
+    console.log(totalPages);
     return (
-        <div>
+      <div>
             <div className='pagination-container'>
             { 
                 
@@ -59,22 +43,22 @@ const Pagination = () => {
                         <a  style={{textDecoration:"none",color:"white"}}href={story.url}>Click here to Watch on youtube</a>
                         </div>
                         </div>
-                    )
-                     
-                    
+                    ) 
                 }) :''
             }
-            { 
-                Array.from({length:totalPages},(_,i) =>{
-                    return(
-                        <button onClick={()=>handlePageChange(i+1)} key={i}>
-                            {i+1}
-                        </button>
-                    )
-                })
-            }
-            </div>
+            
         </div>
+        <div className='pagination1'>
+        {
+          pages.map((page,index)=>{
+          return <button key={index} onClick={()=>{
+            setCurrentPage(page)
+          }} className={page === currentPage ? 'active' : ''}>{page}</button>
+          })
+        }
+        </div>
+        </div>
+      
     );
 }
 
