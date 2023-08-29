@@ -1,0 +1,151 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.main-container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+
+}
+
+body{
+  height:100vh;
+  background-image: url(../public/Background-img.jpg);
+  /* background-size:100% 100%; */
+  background-size: 100% 100%;
+  color: black;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container{
+  height: 100vh;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  border: 2px  darkslateblue;
+}
+
+.images{
+  height: 300px;
+  width: 400px;
+  padding: 20px;
+}
+
+.img{
+  width: 100%;
+  height: 500px;
+  object-fit: cover
+}
+
+.navbar{
+  height: 50px;
+  padding-left: 30px;
+  color: yellowgreen;
+}
+
+.home{
+  color: black;
+  text-decoration: none;
+}
+
+.funny{
+  color: lavenderblush;
+  text-decoration: none;
+  padding-left: 150px;
+}
+.cooking{
+  color: lavenderblush;
+  text-decoration: none;
+  
+}
+.lifestyle{ 
+  color: lavenderblush;
+  text-decoration: none;
+}
+.authentication{
+  color: lavenderblush; 
+  text-decoration: none;
+  padding-right: 40px;
+}
+
+.HomeContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  justify-content: center;
+  color: black;
+  gap: 30px;
+  
+}
+.HomeSlider{
+  background-color:rgba(255, 240, 245, 0.201);
+  color: black;
+  /* padding-top: 200px;
+  padding-left: 10px; */
+  padding:10px;
+  /* position: ; */
+  border-radius: 10px ;
+  border: 2px solid rgba(128, 128, 128, 0.942);
+  
+}
+
+
+.footer{
+  text-align: center;
+  color: white;
+} 
+
+.funny-container{
+  /* display: flex;
+  justify-content: center;
+  height: 100vh; */
+  margin: 50px;
+  text-align: center;
+}
+
+.pagination-container{
+  height: 500px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
