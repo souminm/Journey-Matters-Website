@@ -3,10 +3,11 @@ import Pagination from './Pagination';
 
 const FunnyVideos = () => {
     return (
-        <div>
-         <h4 style={{paddingLeft:"30px",textDecoration:"underline",textAlign:"center"}}>#Trending Videos</h4>
         <div class="funny-container">
+        <h4 style={{paddingLeft:"30px",textDecoration:"underline",textAlign:"center"}}>#Trending Videos</h4>
+        <div>
         <Pagination></Pagination>
+        </div>
       {/* {data.stories.map((story) => (
         <div>
           <div style={{paddingLeft:"10px"}}>
@@ -19,7 +20,6 @@ const FunnyVideos = () => {
           </div>
         </div>
       ))} */}
-    </div>
     </div>
     );
 }

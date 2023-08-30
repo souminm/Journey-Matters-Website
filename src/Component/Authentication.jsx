@@ -1,27 +1,92 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginForm.css'
+import CreateListing from './CreateListing';
 
-function Authentication() {
-    return (
-        <div className='login'>
-            <h2 className='mb-5'>Login! </h2>
-
-            <div className='form-group mb-2'>
-                <label style={{paddingRight:"10px"}} htmlFor='email'><b>Email Address:</b></label>
-                <input type ="email"></input>
-            </div>
-            <div className='form-group mb-3'>
-                <label  style={{paddingRight:"43px"}}htmlFor='password'><b>Password:</b></label>
-                <input type ="password"></input>
-            </div>
-            <div className='form-group mb-2'>
-                <input type ="checkbox"></input>
-                <label htmlFor='checkbox'>Remember me</label>
-            </div>
-            <button style={{width:"100px", marginLeft:"630px"}}type='submit' className='btn btn-success'>Sign In</button>
-        </div>
-        
+function Authentication(props) {
+    
+    const [errorMessages, setErrorMessages] = useState({});
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    
+    // User Login info
+    const database = [
+      {
+        username: "manoj",
+        password: "pass1"
+      },
+      {
+        username: "soma",
+        password: "pass2"
+      }
+    ];
+  
+    const errors = {
+      uname: "invalid username",
+      pass: "invalid password"
+    };
+  
+    const handleSubmit = (event) => {
+      //Prevent page reload
+      event.preventDefault();
+  
+      var { uname, pass } = document.forms[0];
+  
+      // Find user login info
+      const userData = database.find((user) => user.username === uname.value);
+  
+      // Compare user info
+      if (userData) {
+        if (userData.password !== pass.value) {
+          // Invalid password
+          setErrorMessages({ name: "pass", message: errors.pass });
+        } else {
+          setIsSubmitted(true);
+        }
+      } else {
+        // Username not found
+        setErrorMessages({ name: "uname", message: errors.uname });
+      }
+    };
+  
+    // Generate JSX code for error message
+    const renderErrorMessage = (name) =>
+      name === errorMessages.name && (
+        <div className="error">{errorMessages.message}</div>
+      );
+  
+    // JSX code for login form
+    const renderForm = (
+    <div className="login-form">
+      <div className="form">
+        <form onSubmit={handleSubmit}>
+        <p style={{textAlign:"center"}}>Login</p>
+          <div className="input-container">
+            <label>Username </label>
+            <input type="text" name="uname" required />
+            {renderErrorMessage("uname")}
+          </div>
+          <div className="input-container">
+            <label>Password </label>
+            <input type="password" name="pass" required />
+            {renderErrorMessage("pass")}
+          </div>
+          <div className="button-container">
+            <input type="submit" />
+          </div>
+        </form>
+      </div>
+      </div>
     );
+
+
+  
+    return (
+      <div className="app">
+          {isSubmitted ? <CreateListing></CreateListing> :renderForm}
+    </div>
+    );
+  
+        
+
 }
 
 export default Authentication;
