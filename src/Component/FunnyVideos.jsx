@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Pagination from './Pagination';
 
-const FunnyVideos = () => {
+const FunnyVideos = ({onChange }) => {
+
+  useEffect(()=>{
+    onChange()
+  },[onChange])
     return (
         <div class="funny-container">
         <h4 style={{paddingLeft:"30px",textDecoration:"underline",textAlign:"center"}}>#Trending Videos</h4>

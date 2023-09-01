@@ -1,13 +1,129 @@
-import React from 'react';
+import React, { useState } from "react";
+import Axios from "axios";
 
 function CreateListing(props) {
-    return (
-        <div>
-            Welcome! Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+  const [formData, setFormData] = useState({
+    category: "Entertainment",
+    link: "",
+    url: "",
+    title: "",
+  });
 
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonoru
+  const [msg,setMsg] = useState('');
+
+  const handleEventChange = (event) => {
+    //console.log(event.target);
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const response = await Axios.post(
+        "http://localhost:8080/api/create-listing",
+        formData
+      )
+     if(response.data.success === true){
+      setMsg('Listing created Successfully')
+     }
+     else{
+      setMsg('Listing failed! .');
+     }
+
+     setFormData( {category: "Entertainment",
+     link: "",
+     url: "",
+     title: "",})
+     
+     setTimeout(function(){
+       setMsg('');
+     },2000)
+    
+   
+  };
+
+  return (
+    <div>
+      <header>
+        <h1 id="title">Admin Listing form</h1>
+        <p id="description"></p>
+      </header>
+
+      <form id="listing-form" onSubmit={handleFormSubmit}>
+        <div>
+          <p>which listing has to be created?</p>
+          <label for="category" required>
+            Choose a category:
+          </label>
+          <select
+            id="dropdown"
+            name="category"
+            value={formData.category}
+            onChange={handleEventChange}
+            className="form-input-size"
+            required
+          >
+            <option disabled selected value>
+              Select category
+            </option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Cooking">Cooking</option>
+            <option value="Lifestyle">Lifestyle</option>
+          </select>
         </div>
-    );
+        <div className="form-input">
+          <label id="link-label">Link:</label>
+          <span class="input-group-addon">https://img.youtube.com/vi/</span>
+          <input
+            type="text"
+            name="link"
+            value={formData.link}
+            onChange={handleEventChange}
+            id="link"
+            placeholder="Enter short link of video"
+            className="form-input-size"
+            required
+          />
+          <span class="input-group-addon">/hqdefault.jpg</span>
+        </div>
+        <div className="form-input">
+          <label id="title-label">Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleEventChange}
+            id="title"
+            placeholder="Enter title of video"
+            className="form-input-size"
+            required
+          />
+        </div>
+        <div className="form-input">
+          <label id="name-label">Url:</label>
+          <input
+            type="text"
+            id="link"
+            name="url"
+            value={formData.url}
+            onChange={handleEventChange}
+            placeholder="Enter url of video"
+            className="form-input-size"
+            required
+          />
+        </div>
+        <div className="form-input">
+          <button type="submit" id="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+
+      <p>{msg}</p>
+    </div>
+  );
 }
 
 export default CreateListing;

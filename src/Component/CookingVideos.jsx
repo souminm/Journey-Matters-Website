@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import CookingPagination from './CookingPagination';
 
-function CookingVideos(props) {
+function CookingVideos({onChange}) {
+
+    useEffect(()=>{
+        onChange()
+    },[onChange])
     return (
         <div className='cooking-container'>
-            Welcome to Cooking Section
+            <h4 style={{paddingLeft:"30px",textDecoration:"underline",textAlign:"center"}}>#Trending Videos</h4>
+        <div>
+        <CookingPagination></CookingPagination>
+        </div>
         </div>
     );
 }

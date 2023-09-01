@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import ImageSlider from './ImageSlider';
 
-function Home(props) {
+function Home({onChange}) {
     const [name,setName] = useState([""]);
      
      useEffect(()=>{
         if(name.length!==18){
             setTimeout(getName,200);
         }
+        
      },[name])
+
+     useEffect(()=>{
+        onChange()
+     },[onChange])
 
    function getName(){
         let fullName="Journey Matters :)";

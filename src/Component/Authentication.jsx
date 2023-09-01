@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './LoginForm.css'
 import CreateListing from './CreateListing';
 
-function Authentication(props) {
+function Authentication({onChange}) {
     
+  useEffect(()=>{
+    onChange()
+  },[onChange])
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     

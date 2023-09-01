@@ -19,6 +19,9 @@ const Header = () => {
             <Link className='authentication' to ="/admin">
                 <a id="anchor4">Admin</a>
             </Link>
+            {/* <div  style={{color:"white"}}className='toggle_btn'>
+            <i class="fa-solid fa-bars"></i>
+            </div> */}
             
         </div>
     );
