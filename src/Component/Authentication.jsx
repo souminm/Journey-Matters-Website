@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginForm.css'
-import CreateListing from './CreateListing';
+
+
 
 function Authentication({onChange}) {
     
+  const navigate = useNavigate();
   useEffect(()=>{
     onChange()
   },[onChange])
@@ -84,7 +87,7 @@ function Authentication({onChange}) {
   
     return (
       <div className="app">
-          {isSubmitted ? <CreateListing></CreateListing> :renderForm}
+          {isSubmitted ? navigate('/create-listing') :renderForm}
     </div>
     );
   

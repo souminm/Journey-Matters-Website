@@ -174,7 +174,8 @@ background-position: center; */
   height: 500px;
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .pagination1{
@@ -242,6 +243,66 @@ background-position: center; */
   color: black;
 }
 
+.view-listing{
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+}
 
+.update-listing{
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+}
 
+.create-listing{
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+}
+
+.list-table{
+  width: 1000px;
+  border: 2px solid black;
+  background-color: crimson;
+  text-align: center;
+}
+.list-table thead {
+  text-align: center;
+  border: 2px solid black;
+  border-collapse: collapse;
+
+}
+.list-table th{
+  border: 2px solid black;
+  border-collapse: collapse;
+
+}
+.list-table tr{
+  border: 2px solid black;
+  border-collapse: collapse;
+
+}
+
+.list-table td{
+  border: 2px solid black;
+  border-collapse: collapse;
+  
+  
+}
+
+.actions{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 
