@@ -3,7 +3,6 @@ import ImageSlider from './ImageSlider';
 
 function Home({onChange}) {
     const [name,setName] = useState([""]);
-     
      useEffect(()=>{
         if(name.length!==18){
             setTimeout(getName,200);

@@ -1,73 +1,86 @@
-
 import "./ImgSlider.css";
-import data from "../YoutubeVideo.json"
-
+import { useEffect, useState } from "react";
+import blogService from "../Services/BlogService";
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
 const ImageSlider = () => {
-    
-  console.log(data);
-  
-    return (
-        <div class="slider">
-        {/* {data.stories.map((story) => (
-        <div>
-          <div style={{paddingLeft:"10px"}}>
-            <img className="images" src={story.link} alt="youtube video"></img>
-          </div>
-          <div>
-          <br></br>
-            <h5>{story.title}</h5>
-            <a href={story.url}>Watch on Youtube</a>
-          </div>
-        </div>
-      ))} */}
-        {/* <span id="slide-1"></span>
-        <span id="slide-2"></span>
-        <span id="slide-3"></span>
-        <div class="image-container">
-          <img src="https://img.youtube.com/vi/F7JuYUN9YYg/hqdefault.jpg" class="slide" width="500" height="300" />
-          <img src="https://img.youtube.com/vi/F7JuYUN9YYg/hqdefault.jpg" class="slide" width="500" height="300" />
-          <img src="https://img.youtube.com/vi/F7JuYUN9YYg/hqdefault.jpg" class="slide" width="500" height="300" />
-        </div>
-        <div class="buttons">
-          <a href="#slide-1"></a>
-          <a href="#slide-2"></a>
-          <a href="#slide-3"></a>
-        </div>
-        <div>
-        <a href ="https://www.youtube.com/shorts/eI5SW9VEOL8">Click to view</a>
-        </div> */}
+  const [current, setCurrent] = useState(0);
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-       {/* cssss */}
-      <span id="slide-1"></span>
-      <span id="slide-2"></span>
-      <span id="slide-3"></span>
-      <span id="slide-4"></span>
-      <div class="image-container">
-        {data.stories.map((story,index) => (
-          <a href={story.url}>
-          <img
-            className="slide"
-            src={story.link}
-            width="500"
-            height="300"
-            alt="youtube video"
-          />
-          </a>
-        ))}
-      </div>
+  const fetchData = async () => {
+    await blogService
+      .getData()
+      .then((res) => {
+        console.log(res, "result");
+        const cookingData = res.data.data;
+        const final = [];
+        const stringify_Object = JSON.stringify(cookingData);
+        var stringify = JSON.parse(stringify_Object);
+        for (var i = 0; i < stringify.length; i++) {
+          if (stringify[i]["category"] !== "") {
+            final.push(stringify[i]);
+          }
+        }
+        console.log(final, "final Data");
+        if (final.length !== 0) {
+          setUserData(final);
+        } else {
+          setUserData("");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const itemsToDisplay = Array.from(userData).slice(0, 4);
 
-      <div class="buttons">
-        <a href="#slide-1"></a>
-        <a href="#slide-2"></a>
-        <a href="#slide-3"></a>
-        <a href="#slide-4"></a>
-      </div>
-      {/* <div>
-        <a href="https://www.youtube.com/shorts/eI5SW9VEOL8">Click to view</a>
-      </div> */}
-    </div>
-    );
+  const nextSlide = () => {
+    setCurrent(current === itemsToDisplay.length - 1 ? 0 : current + 1);
   };
 
-  export default ImageSlider;
+  const prevSlide = () => {
+    setCurrent(current === 0 ? itemsToDisplay.length - 1 : current - 1);
+  };
+
+  if (!Array.isArray(itemsToDisplay) || itemsToDisplay.length <= 0) {
+    return null;
+  }
+  console.log(itemsToDisplay, "data");
+  return (
+    <section className="slider">
+      <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
+      <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
+      {itemsToDisplay.map((slide, index) => {
+        return (
+          <div
+            className={index === current ? "slide active" : "slide"}
+            key={index}
+          >
+            {index === current && (
+              <div>
+                <h5>{slide.title}</h5>
+
+                <a href={slide.url}>
+                  {" "}
+                  <img src={
+                      "https://img.youtube.com/vi/" +
+                      slide.link +
+                      "/hqdefault.jpg"
+                    }
+                    alt="blog"
+                    className="image"
+                  />
+                </a>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </section>
+  );
+};
+
+export default ImageSlider;

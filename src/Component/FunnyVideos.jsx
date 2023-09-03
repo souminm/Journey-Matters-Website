@@ -14,18 +14,6 @@ const FunnyVideos = ({onChange }) => {
         <div>
         <Pagination></Pagination>
         </div>
-      {/* {data.stories.map((story) => (
-        <div>
-          <div style={{paddingLeft:"10px"}}>
-            <img className="images" src={story.link} alt="youtube video"></img>
-          </div>
-          <div>
-          <br></br>
-            <h5>{story.title}</h5>
-            <a href={story.url}>Watch on Youtube</a>
-          </div>
-        </div>
-      ))} */}
     </div>
     );
 }

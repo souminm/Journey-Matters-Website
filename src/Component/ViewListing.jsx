@@ -60,7 +60,7 @@ const ViewListing = () => {
     }
   };
   //Pagination
-  const itemsPerPage = 10;
+  const itemsPerPage = 8;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
@@ -72,69 +72,73 @@ const ViewListing = () => {
   console.log(itemsToDisplay);
   return (
     <div className="view-listing">
-      <div>
-      <br></br>
-        <h1>View All Listings!</h1>
+         <h1>View All Listings!</h1>
         {itemsToDisplay && itemsToDisplay?.length > 0 && (
-          <table className="list-table">
-            <thead>
-              <th>Date of Creation</th>
-              <th>Category</th>
-              <th>Title</th>
-              <th>Img Link</th>
-              <th>Video Url</th>
-              <th>Actions</th>
-            </thead>
-            <tbody>
-              {console.log(itemsToDisplay, "items")}
-              {itemsToDisplay.map((post) => (
+          <div>
+            <table  style ={{border:"1px solid black"}} className="table tabled-striped table-bordered">
+              <thead>
                 <tr>
-                  {console.log(post, "attributes")}
-                  <td>{post.createdAt}</td>
-                  <td>{post.category}</td>
-                  <td>{post.title}</td>
-                  <td>
-                    <img
-                      src={
-                        "https://img.youtube.com/vi/" +
-                        post.link +
-                        "/hqdefault.jpg"
-                      }
-                      style={{
-                        width: "275px",
-                        height: "150px",
-                        paddingLeft: "10px",
-                      }}
-                      alt="youtube videos"
-                    />
-                  </td>
-                  <td>{post.url}</td>
-                  <td>
-                    <div className="actions">
-                      <div>
-                        <button
-                          id={post._id}
-                          onClick={(e) => deleteListing(post._id, e)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                      <div>
-                        <Link
-                          style={{ paddingTop: "20px" }}
-                          to={`/update-listing/${post._id}`}
-                        >
-                          <button onClick={() => onUpdate(post)}>update</button>
-                        </Link>
-                      </div>
-                    </div>
-                  </td>
+                <th>Date of Creation</th>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Img Link</th>
+                <th>Video Url</th>
+                <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              
+              <tbody>
+                {console.log(itemsToDisplay, "items")}
+                {itemsToDisplay.map((post) => (
+                  <tr>
+                    {console.log(post, "attributes")}
+                    <td>{post.createdAt}</td>
+                    <td>{post.category}</td>
+                    <td>{post.title}</td>
+                    <td>
+                      <img
+                        src={
+                          "https://img.youtube.com/vi/" +
+                          post.link +
+                          "/hqdefault.jpg"
+                        }
+                        style={{
+                          width: "100px",
+                          height: "50px",
+                        
+                        }}
+                        alt="youtube videos"
+                      />
+                    </td>
+                    <td>{post.url}</td>
+                    <td>
+                      <div className="actions">
+                        <div>
+                          <button
+                            id={post._id}
+                            onClick={(e) => deleteListing(post._id, e)}
+                            className="btn btn-danger"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                        <div>
+                          <Link
+                            style={{ paddingTop: "20px" }}
+                            to={`/update-listing/${post._id}`}
+                          >
+                            <button onClick={() => onUpdate(post)} className="btn btn-info">update</button>
+                          </Link>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
         )}
-      </div>
       {/* Pagination */}
       <div className="pagination1">
         {pages.map((page, index) => {
@@ -153,14 +157,14 @@ const ViewListing = () => {
       </div>
 
       {/* Pagination end */}
-
       <div>
-        <Link className="create-listing" to="/create-listing">
-          <button>Prev</button>
+        <Link to="/create-listing">
+          <button  className="btn btn-danger">Prev</button>
         </Link>
       </div>
-    </div>
+  </div>
   );
+  
 };
 
 export default ViewListing;

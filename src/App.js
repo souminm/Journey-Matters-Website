@@ -117,7 +117,9 @@ function App() {
               }
             />
           </Routes>
-          <Footer></Footer>
+          <div className="footer">
+            <Footer></Footer>
+          </div>
         </Router>
       </div>
     </FormContextProvider>

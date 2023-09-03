@@ -112,7 +112,7 @@ function CreateListing(props) {
             />
           </div>
           <div className="form-input">
-            <button type="submit" id="submit">
+            <button className = "btn btn-info"type="submit" id="submit">
               Submit
             </button>
           </div>
@@ -120,8 +120,8 @@ function CreateListing(props) {
       </div>
       <div>
         <p>{msg}</p>
-        <Link className="view-listing" to="/view-listing">
-          <button>View Listing</button>
+        <Link to="/view-listing">
+          <button className="btn btn-info">View Listing</button>
         </Link>
       </div>
     </div>

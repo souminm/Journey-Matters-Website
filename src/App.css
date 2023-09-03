@@ -129,10 +129,11 @@ color: darkred;
 }
 
 .HomeContainer{
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 500px;
+  height: 700px;
   justify-content: center;
   color: white;
   gap: 30px;
@@ -145,7 +146,7 @@ color: darkred;
   padding-left: 10px; */
   padding:10px;
   /* position: ; */
-  border-radius: 10px ;
+  border-radius: 10px  ;
   border: 2px solid rgba(128, 128, 128, 0.942);
   
 }
@@ -270,13 +271,13 @@ background-position: center; */
   color: black;
 }
 
-.list-table{
+ .list-table{
   width: 1000px;
   border: 2px solid black;
   background-color: crimson;
   text-align: center;
-}
-.list-table thead {
+ }
+/* .list-table thead {
   text-align: center;
   border: 2px solid black;
   border-collapse: collapse;
@@ -295,14 +296,28 @@ background-position: center; */
 
 .list-table td{
   border: 2px solid black;
-  border-collapse: collapse;
+  overflow: hidden;
   
-  
-}
+}  */
 
 .actions{
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+.footer{
+  margin-top: auto;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
 }
 

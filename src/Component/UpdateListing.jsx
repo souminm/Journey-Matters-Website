@@ -117,15 +117,15 @@ const {formData,setFormData} = useFormData()
           />
         </div>
         <div className="form-input">
-          <button type="submit" id="submit">
+          <button className ="btn btn-info"type="submit" id="submit">
             Submit
           </button>
         </div>
       </form>
 
       <p>{msg}</p>
-      <Link className='view-listing' to ="/view-listing">
-      <button>Prev</button>
+      <Link to ="/view-listing">
+      <button className="btn btn-danger">Prev</button>
             </Link>
      
     </div>
