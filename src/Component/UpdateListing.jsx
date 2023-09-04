@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BlogService from "../Services/BlogService";
 import { useFormData } from "../Services/FormContext";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function UpdateListing(props) {
 const {formData,setFormData} = useFormData()
-  const [msg,setMsg] = useState('');
+ // const [msg,setMsg] = useState('');
 
 
   const handleEventChange = (event) => {
@@ -28,10 +29,12 @@ const {formData,setFormData} = useFormData()
         "title" : formData.title
     })
      if(response.data.success === true){
-      setMsg('Listing updated Successfully')
+     // setMsg('Listing updated Successfully')
+     toast.success("Listing updated successfully .")
      }
      else{
-      setMsg('Listing failed! .');
+     // setMsg('Listing failed! .');
+      toast.error("Listing updation failed .")
      }
 
     //  setFormData( {category: "Entertainment",
@@ -41,13 +44,14 @@ const {formData,setFormData} = useFormData()
     //  id : id
     //  })
      
-     setTimeout(function(){
-       setMsg('');
-     },3000)
+    //  setTimeout(function(){
+    //    setMsg('');
+    //  },3000)
   };
 
   return (
     <div className="update-listing">
+    <ToastContainer/>
       <header>
         <h1 id="title">Update Admin Listing form</h1>
         <p id="description"></p>
@@ -123,7 +127,7 @@ const {formData,setFormData} = useFormData()
         </div>
       </form>
 
-      <p>{msg}</p>
+      {/* <p>{msg}</p> */}
       <Link to ="/view-listing">
       <button className="btn btn-danger">Prev</button>
             </Link>

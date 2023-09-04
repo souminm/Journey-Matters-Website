@@ -28,6 +28,7 @@ function Home({onChange}) {
             <div className='HomeSlider'>
              <p>Trending videos</p>
             <ImageSlider></ImageSlider>
+           <a href='https://www.youtube.com/@journeymatters1701'> <i class="ri-youtube-fill">Stay tuned for further more videos </i></a>
             </div>
         </div>
     );

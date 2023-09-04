@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginForm.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -44,12 +46,17 @@ function Authentication({onChange}) {
         if (userData.password !== pass.value) {
           // Invalid password
           setErrorMessages({ name: "pass", message: errors.pass });
+          toast.error("Invalid Password entered .")
         } else {
           setIsSubmitted(true);
+          //console.log('authenticated');
+       
         }
+       
       } else {
         // Username not found
         setErrorMessages({ name: "uname", message: errors.uname });
+        toast.error("Invalid Username entered .")
       }
     };
   
@@ -78,6 +85,7 @@ function Authentication({onChange}) {
           <div className="button-container">
             <input type="submit" />
           </div>
+          <ToastContainer/>
         </form>
       </div>
       </div>
@@ -87,6 +95,7 @@ function Authentication({onChange}) {
   
     return (
       <div className="app">
+      <ToastContainer/>
           {isSubmitted ? navigate('/create-listing') :renderForm}
     </div>
     );

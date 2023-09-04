@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import blogService from "../Services/BlogService";
 import { useState, useEffect } from "react";
 import { useFormData } from "../Services/FormContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ViewListing = () => {
   // const navigate = useNavigate();
@@ -55,8 +57,9 @@ const ViewListing = () => {
     if (response.data.success === true) {
     //  alert(response.data.msg);
       document.getElementById(id).parentElement.parentElement.parentElement.parentElement.remove();
+      toast.success("listing deleted successfully .")
     } else {
-      alert(response.data.msg);
+      toast.error("listing deletion failed .")
     }
   };
   //Pagination
@@ -72,6 +75,7 @@ const ViewListing = () => {
   console.log(itemsToDisplay);
   return (
     <div className="view-listing">
+       <ToastContainer/>
          <h1>View All Listings!</h1>
         {itemsToDisplay && itemsToDisplay?.length > 0 && (
           <div>

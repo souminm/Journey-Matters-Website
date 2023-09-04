@@ -1,7 +1,7 @@
 import "./ImgSlider.css";
 import { useEffect, useState } from "react";
 import blogService from "../Services/BlogService";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+import { BiChevronsLeft, BiChevronsRight } from "react-icons/bi";
 
 const ImageSlider = () => {
   const [current, setCurrent] = useState(0);
@@ -35,7 +35,7 @@ const ImageSlider = () => {
         console.log(error);
       });
   };
-  const itemsToDisplay = Array.from(userData).slice(0, 4);
+  const itemsToDisplay = Array.from(userData).slice(0, 5);
 
   const nextSlide = () => {
     setCurrent(current === itemsToDisplay.length - 1 ? 0 : current + 1);
@@ -51,8 +51,8 @@ const ImageSlider = () => {
   console.log(itemsToDisplay, "data");
   return (
     <section className="slider">
-      <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
-      <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
+      <BiChevronsLeft className="left-arrow" onClick={prevSlide} />
+      <BiChevronsRight className="right-arrow" onClick={nextSlide} />
       {itemsToDisplay.map((slide, index) => {
         return (
           <div

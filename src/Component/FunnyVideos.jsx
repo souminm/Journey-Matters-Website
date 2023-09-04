@@ -7,7 +7,7 @@ const FunnyVideos = ({onChange }) => {
     onChange()
   },[onChange])
     return (
-        <div class="funny-container">
+        <div className="funny-container">
         <div>
         <h4 style={{paddingLeft:"30px",textDecoration:"underline",textAlign:"center"}}>#Trending Videos</h4>
         </div>

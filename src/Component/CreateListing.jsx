@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function CreateListing(props) {
   const [formData, setFormData] = useState({
     category: "Entertainment",
@@ -10,7 +11,7 @@ function CreateListing(props) {
     title: "",
   });
 
-  const [msg, setMsg] = useState("");
+  //const [msg, setMsg] = useState("");
 
   const handleEventChange = (event) => {
     //console.log(event.target);
@@ -27,20 +28,23 @@ function CreateListing(props) {
       formData
     );
     if (response.data.success === true) {
-      setMsg("Listing created Successfully");
+      //setMsg("Listing created Successfully");
+      toast.success("Listing created successfully !.")
     } else {
-      setMsg("Listing failed! .");
+    //  setMsg("Listing failed! .");
+      toast.success("Listing creation failed !.")
     }
 
     setFormData({ category: "Entertainment", link: "", url: "", title: "" });
 
-    setTimeout(function () {
-      setMsg("");
-    }, 2000);
+    // setTimeout(function () {
+    //   setMsg("");
+    // }, 2000);
   };
 
   return (
     <div className="create-listing">
+    <ToastContainer/>
       <div>
         <header>
           <h1 id="title">Admin Listing form</h1>
@@ -119,7 +123,7 @@ function CreateListing(props) {
         </form>
       </div>
       <div>
-        <p>{msg}</p>
+         {/* <p>{msg}</p> */}
         <Link to="/view-listing">
           <button className="btn btn-info">View Listing</button>
         </Link>

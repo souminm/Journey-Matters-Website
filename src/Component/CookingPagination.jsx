@@ -54,18 +54,21 @@ const CookingPagination = () => {
   return (
     <div>
       <div className="pagination-container">
-      {console.log(itemsToDisplay,'cookingItems')}
         {itemsToDisplay && itemsToDisplay?.length > 0
           ? itemsToDisplay.map((story) => {
               return (
                 <div>
-                {console.log(story,'story')}
-                  <b key={story.id}>{story.title}</b>
-                  <img
-                    style={{ borderRadius: "10px" }}
-                    src={generateFullLink(story.link)}
-                    alt="youtubeVideo"
-                  ></img>
+                  <div>
+                    <b key={story.id}>{story.title}</b>
+                    <br></br>
+                    <br></br>
+                    <img
+                      style={{ borderRadius: "10px", height: "20rem" }}
+                      src={generateFullLink(story.link)}
+                      alt="cooking"
+                    ></img>
+                  </div>
+                  <br></br>
                   <div>
                     <a
                       style={{ textDecoration: "none", color: "white" }}
