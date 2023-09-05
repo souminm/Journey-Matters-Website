@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import blogService from "../Services/BlogService";
 import { useState, useEffect } from "react";
 import { useFormData } from "../Services/FormContext";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./table.css";
 
 const ViewListing = () => {
   // const navigate = useNavigate();
@@ -55,11 +56,13 @@ const ViewListing = () => {
   const deleteListing = async (id, e) => {
     var response = await blogService.deleteData(id);
     if (response.data.success === true) {
-    //  alert(response.data.msg);
-      document.getElementById(id).parentElement.parentElement.parentElement.parentElement.remove();
-      toast.success("listing deleted successfully .")
+      //  alert(response.data.msg);
+      document
+        .getElementById(id)
+        .parentElement.parentElement.parentElement.parentElement.remove();
+      toast.success("listing deleted successfully .");
     } else {
-      toast.error("listing deletion failed .")
+      toast.error("listing deletion failed .");
     }
   };
   //Pagination
@@ -75,22 +78,23 @@ const ViewListing = () => {
   console.log(itemsToDisplay);
   return (
     <div className="view-listing">
-       <ToastContainer/>
-         <h1>View All Listings!</h1>
-        {itemsToDisplay && itemsToDisplay?.length > 0 && (
-          <div>
-            <table  style ={{border:"1px solid black"}} className="table tabled-striped table-bordered">
+      <ToastContainer />
+      <h1>View All Listings!</h1>
+      {itemsToDisplay && itemsToDisplay?.length > 0 && (
+        <div className="table-container">
+          <div className="header-fixed">
+            <table>
               <thead>
                 <tr>
-                <th>Date of Creation</th>
-                <th>Category</th>
-                <th>Title</th>
-                <th>Img Link</th>
-                <th>Video Url</th>
-                <th>Actions</th>
+                  <th>Date of Creation</th>
+                  <th>Category</th>
+                  <th>Title</th>
+                  <th>Img Link</th>
+                  <th>Video Url</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
-              
+
               <tbody>
                 {console.log(itemsToDisplay, "items")}
                 {itemsToDisplay.map((post) => (
@@ -109,7 +113,6 @@ const ViewListing = () => {
                         style={{
                           width: "100px",
                           height: "50px",
-                        
                         }}
                         alt="youtube videos"
                       />
@@ -127,11 +130,13 @@ const ViewListing = () => {
                           </button>
                         </div>
                         <div>
-                          <Link
-                            style={{ paddingTop: "20px" }}
-                            to={`/update-listing/${post._id}`}
-                          >
-                            <button onClick={() => onUpdate(post)} className="btn btn-info">update</button>
+                          <Link to={`/update-listing/${post._id}`}>
+                            <button
+                              onClick={() => onUpdate(post)}
+                              className="btn btn-info"
+                            >
+                              update
+                            </button>
                           </Link>
                         </div>
                       </div>
@@ -141,8 +146,8 @@ const ViewListing = () => {
               </tbody>
             </table>
           </div>
-
-        )}
+        </div>
+      )}
       {/* Pagination */}
       <div className="pagination1">
         {pages.map((page, index) => {
@@ -163,12 +168,11 @@ const ViewListing = () => {
       {/* Pagination end */}
       <div>
         <Link to="/create-listing">
-          <button  className="btn btn-danger">Prev</button>
+          <button className="btn btn-danger">Prev</button>
         </Link>
       </div>
-  </div>
+    </div>
   );
-  
 };
 
 export default ViewListing;

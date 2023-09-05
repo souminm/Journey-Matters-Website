@@ -51,31 +51,21 @@ const Pagination = () => {
 
   const itemsToDisplay = userData.slice(startIndex, endIndex);
   return (
-    <div>
-      <div className="pagination-container">
+<div class="container">
+      <div class="content-section">
         {itemsToDisplay && itemsToDisplay?.length > 0
           ? itemsToDisplay.map((story) => {
               return (
-                <div>
-                  <div>
-                    <b key={story.id}>{story.title}</b>
-                    <br></br>
-                    <br></br>
-                    <img
-                      style={{ borderRadius: "10px", height: "20rem" }}
-                      src={generateFullLink(story.link)}
-                      alt="funny"
-                    ></img>
-                  </div>
-                  <br></br>
-                  <div>
-                    <a
-                      style={{ textDecoration: "none", color: "white" }}
-                      href={story.url}
-                    >
-                      Click here to Watch on youtube
-                    </a>
-                  </div>
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src={generateFullLink(story.link)}
+                    alt="Entertainment"
+                  ></img>
+                  <h4 class="card-title">{story.title}</h4>
+                  <a href={story.url} class="btn btn-primary">
+                  Watch now on Youtube
+                  </a>
                 </div>
               );
             })

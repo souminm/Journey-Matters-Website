@@ -1,5 +1,3 @@
-import logo from "./logo.svg";
-import ImageSlider from "./Component/ImageSlider";
 import Header from "./Component/Header";
 import Home from "./Component/Home";
 import Footer from "./Component/Footer";
