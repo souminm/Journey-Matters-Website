@@ -6,16 +6,19 @@ import { useFormData } from "../Services/FormContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./table.css";
+import ReactPaginate from "react-paginate";
 
 const ViewListing = () => {
   // const navigate = useNavigate();
-  const [userData, setUserData] = useState({});
-  const { formData, setFormData } = useFormData();
+  //const [userData, setUserData] = useState({});
+  const { setFormData } = useFormData();
 
   //Pagination
-  const [currentPage, setCurrentPage] = useState(1);
-  const count = userData.length;
-  let pages = [];
+  const [userData, setUserData] = useState([]);
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 8;
 
   //
 
@@ -25,13 +28,20 @@ const ViewListing = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(userData.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(userData.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, userData]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % userData.length;
+    setItemOffset(newOffset);
+  };
 
   const fetchData = async () => {
     await blogService
       .getData()
       .then((res) => {
-        console.log(res, "result");
         const cookingData = res.data.data;
         const final = [];
         const stringify_Object = JSON.stringify(cookingData);
@@ -41,7 +51,6 @@ const ViewListing = () => {
             final.push(stringify[i]);
           }
         }
-        console.log(final, "final Data");
         if (final.length !== 0) {
           setUserData(final);
         } else {
@@ -55,8 +64,9 @@ const ViewListing = () => {
 
   const deleteListing = async (id, e) => {
     var response = await blogService.deleteData(id);
+    console.log(id,'id');
+    console.log(response,'response')
     if (response.data.success === true) {
-      //  alert(response.data.msg);
       document
         .getElementById(id)
         .parentElement.parentElement.parentElement.parentElement.remove();
@@ -65,22 +75,12 @@ const ViewListing = () => {
       toast.error("listing deletion failed .");
     }
   };
-  //Pagination
-  const itemsPerPage = 8;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
 
-  for (let i = 1; i <= Math.ceil(count / itemsPerPage); i++) {
-    pages.push(i);
-  }
-
-  const itemsToDisplay = Array.from(userData).slice(startIndex, endIndex);
-  console.log(itemsToDisplay);
   return (
     <div className="view-listing">
       <ToastContainer />
       <h1>View All Listings!</h1>
-      {itemsToDisplay && itemsToDisplay?.length > 0 && (
+      {currentItems && currentItems?.length > 0 && (
         <div className="table-container">
           <div className="header-fixed">
             <table>
@@ -96,10 +96,8 @@ const ViewListing = () => {
               </thead>
 
               <tbody>
-                {console.log(itemsToDisplay, "items")}
-                {itemsToDisplay.map((post) => (
+                {currentItems.map((post) => (
                   <tr>
-                    {console.log(post, "attributes")}
                     <td>{post.createdAt}</td>
                     <td>{post.category}</td>
                     <td>{post.title}</td>
@@ -149,20 +147,21 @@ const ViewListing = () => {
         </div>
       )}
       {/* Pagination */}
-      <div className="pagination1">
-        {pages.map((page, index) => {
-          return (
-            <button
-              key={index}
-              onClick={() => {
-                setCurrentPage(page);
-              }}
-              className={page === currentPage ? "active" : ""}
-            >
-              {page}
-            </button>
-          );
-        })}
+      <div className="pagination-react">
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          containerClassName="pagination"
+          pageLinkClassName="page-num"
+          previousLinkClassName="page-num"
+          nextLinkClassName="page-num"
+          activeLinkClassName="active"
+        />
       </div>
 
       {/* Pagination end */}

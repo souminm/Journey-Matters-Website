@@ -13,6 +13,7 @@
   }
 }
 
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -98,50 +99,6 @@ a:hover{
 }
 
 
-
-/* .navbar{
-  width:100%;
-  height: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
- #weblogo{
-font-size: 1.7rem;
-font-weight: bold;
-color: darkred;
-}
-
-.home{
-  color: black;
-  text-decoration: none;
-}
-
-.funny{
-  color: lavenderblush;
-  text-decoration: none;
-  padding-left: 150px;
-}
-.cooking{
-  color: lavenderblush;
-  text-decoration: none;
-  
-}
-.lifestyle{ 
-  color: lavenderblush;
-  text-decoration: none;
-}
-.authentication{
-  color: lavenderblush; 
-  text-decoration: none;
-  padding-right: 40px;
-} */
-
-
-
 .HomeContainer{
   height: 100vh;
   display: flex;
@@ -171,28 +128,15 @@ color: darkred;
   color: lightgoldenrodyellow;
 } 
 
-.funny-container{
-  /* display: flex;
-  justify-content: center;
-  height: 100vh; */
-  /* margin: 40px;
-  text-align: center; */
-  height: 100vh;
-  /* background-image: url(../public/Entertainment_img.jpg);
-  background-size: cover;
-background-repeat: no-repeat;
-background-position: center; */
 
-}
-
-.pagination-container{
+/* .pagination-container{
   height: 400px;
   display: flex;
   gap: 4rem;
   justify-content: center;
   align-items: center;
   flex-wrap:wrap;
-  /* padding:0 10px 0px 10px; */
+ 
 
 }
 
@@ -223,23 +167,43 @@ background-position: center; */
   border-color: #101010;
   background: rgba(128, 128, 128, 0.659);
   color: #101010;
-}
+} */
+/* react pagination  */
+ .pagination-react{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 5rem;
+  font-size: 1.2rem;
+  gap:5px;
+ }
+ .pagination-react .page-num{
+ padding: 8px 15px;
+ cursor: pointer;
+ border-radius: 3px;
+ font-weight: 400;
+ }
 
-.cooking-container{
-  /* height: 100vh; */
-/* background-image: url(../public/Cooking_img.jpg);
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center; */
-}
+ .pagination-react .page-num:hover{
+  background-color: black;
+  color:white;
 
-.lifestyle-container{
-  height: 100vh;
-  /* background-image: url(../public/Lifestyle_img.jpg);
-  background-size: cover;
-background-repeat: no-repeat;
-background-position: center; */
-}
+ }
+
+ .pagination-react .active{
+  background-color: #873e23;
+  color: white;
+ }
+
+ .pagination-react a{
+  color:black;
+ }
+
+/* --------------- */
+
+
 
 #listing-form{
   width: 700px;
@@ -350,7 +314,7 @@ html{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 140px;
+  padding: 10px 140px;
   gap:40px;
 }
 
@@ -408,4 +372,152 @@ z-index: 2;
   .content-section{
     flex-direction: column;
   }
+}
+
+ 
+@media screen and (width <600px){
+  .HomeContainer{
+    height: 100rem;
+  }
+  .HomeContainer .HomeSlider{
+    width: 90%;
+    height: 400px;
+  }
+  .HomeSlider.slider{
+    width: 25%;
+    height: 200px;
+  }
+  .main-container{
+    height: 110rem;
+  }
+  .funny-container{
+    height: 100rem;
+  }
+  .container{
+    gap: 6rem;
+    height: 95rem;
+  }
+  .container .content-section{
+    
+      flex-direction: column;
+      height :80rem;
+  }
+  .content-section .card{
+    height: 30rem;
+    width: 25rem;
+  }
+  .content-section .card h4{
+    font-size: 1rem;
+  }
+  .content-section .card:hover{
+    transform: scale(1.08);
+    z-index: 2;
+    }
+
+  .pagination-react{
+    flex-wrap: wrap;
+    height: auto;
+    width: 100%;
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+  .pagination-react .pagination{
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  /* .create-listing{
+    height: 100rem;
+  } */
+  .create-listing #listing-form{
+    height: 500px;
+    width: 350px;
+  }
+
+  .update-listing #listing-form{
+    height: 500px;
+    width: 350px;
+  }
+   /* .view-listing{
+    height: 100rem;
+   }
+
+  .view-listing .table-container{
+    height: 800px;
+    width: 350px;
+  }
+  .table-container .header-fixed{
+    height:350px;
+    width: 350px;
+  }
+
+  .header-fixed table{
+    height:150px;
+    width: 200px;
+  }
+   thead,tbody,td,tr{
+   width: 600px;
+   } */
+
+
+  
+
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+  .view-listing{
+    height: 200rem;
+   }
+    .footer{
+    color: purple;
+   
+   }
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+  
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 30%; 
+    padding-top: 10px;
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Date of Creation"; }
+	td:nth-of-type(2):before { content: "Category"; }
+	td:nth-of-type(3):before { content: "Title"; }
+	td:nth-of-type(4):before { content: "Img Link"; }
+	td:nth-of-type(5):before { content: "Video Url"; }
+	td:nth-of-type(6):before { content: "Actions"; }
+
 }

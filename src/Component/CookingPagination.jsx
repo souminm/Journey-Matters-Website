@@ -1,16 +1,31 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ReactPaginate from "react-paginate";
+
 const CookingPagination = () => {
   const [userData, setUserData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const count = userData.length;
-  let pages = [];
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 3;
 
   useEffect(() => {
-    getCookingData();
-  }, []);
+    getFunnyData();
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(userData.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(userData.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, userData]);
 
-  const getCookingData = async () => {
+  //
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % userData.length;
+    setItemOffset(newOffset);
+  };
+
+  //
+
+  const getFunnyData = async () => {
     await axios
       .get("http://localhost:8080/api/get-listing")
       .then((res) => {
@@ -33,13 +48,6 @@ const CookingPagination = () => {
         console.log(error);
       });
   };
-  const itemsPerPage = 3;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  for (let i = 1; i <= Math.ceil(count / itemsPerPage); i++) {
-    pages.push(i);
-  }
 
   function generateFullLink(data) {
     const text1 = "https://img.youtube.com/vi/";
@@ -48,46 +56,43 @@ const CookingPagination = () => {
     const finalResult = result.concat(text2);
     return finalResult;
   }
-  console.log(typeof userData);
-  const itemsToDisplay = userData.slice(startIndex, endIndex);
-  console.log(itemsToDisplay);
+
   return (
     <div class="container">
       <div class="content-section">
-        {itemsToDisplay && itemsToDisplay?.length > 0
-          ? itemsToDisplay.map((story) => {
+        {currentItems && currentItems?.length > 0
+          ? currentItems.map((story) => {
               return (
                 <div class="card">
                   <img
                     class="card-img-top"
                     src={generateFullLink(story.link)}
-                    alt="Cooking"
+                    alt="Entertainment"
                   ></img>
                   <h4 class="card-title">{story.title}</h4>
                   <a href={story.url} class="btn btn-primary">
-                  Watch now on Youtube
+                    Watch now on Youtube
                   </a>
                 </div>
               );
             })
           : ""}
       </div>
-      {/* <br></br>
-      <br></br> */}
-      <div className="pagination1">
-        {pages.map((page, index) => {
-          return (
-            <button
-              key={index}
-              onClick={() => {
-                setCurrentPage(page);
-              }}
-              className={page === currentPage ? "active" : ""}
-            >
-              {page}
-            </button>
-          );
-        })}
+      <div className="pagination-react">
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          containerClassName="pagination"
+          pageLinkClassName="page-num"
+          previousLinkClassName="page-num"
+          nextLinkClassName="page-num"
+          activeLinkClassName="active"
+        />
       </div>
     </div>
   );
