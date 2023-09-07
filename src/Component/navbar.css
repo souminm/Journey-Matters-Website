@@ -4,7 +4,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Jost", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 html {
@@ -31,6 +33,7 @@ li {
   grid-template-columns: 10rem 1fr 2fr 1fr 10rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    /* background-color: #ffffff; */
 }
 
 .logo {
@@ -182,7 +185,7 @@ li {
   }
 
   .mobile-menu-link {
-    background-color: white;
+    background-color: #ffffff;
     height: 20rem;
     display: grid;
     grid-column: 2/5;

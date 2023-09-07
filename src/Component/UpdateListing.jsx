@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import BlogService from "../Services/BlogService";
+import { update } from "../Services/BlogService";
 import { useFormData } from "../Services/FormContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,7 +21,7 @@ const {formData,setFormData} = useFormData()
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const response = await BlogService.update({
+    const response = await update({
         "id" : formData._id,
         "category" : formData.category,
         "link": formData.link,

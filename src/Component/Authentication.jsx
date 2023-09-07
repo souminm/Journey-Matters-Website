@@ -14,19 +14,30 @@ function Authentication({onChange}) {
   },[onChange])
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
-    
+    const USER1 = `${process.env.REACT_APP_USER1}`;
+    const USER2 = `${process.env.REACT_APP_USER2}`;
+    const USER3 = `${process.env.REACT_APP_USER3}`;
+    const PASS1 = `${process.env.REACT_APP_PASSWORD1}`;
+    const PASS2 =`${process.env.REACT_APP_PASSWORD2}`;
+    const PASS3 =`${process.env.REACT_APP_PASSWORD3}`;
+ 
     // User Login info
     const database = [
       {
-        username: "manoj",
-        password: "pass1"
+        username: USER1,
+        password: PASS1
       },
       {
-        username: "soma",
-        password: "pass2"
+        username: USER2,
+        password: PASS2
+      },
+      {
+        username:USER3,
+        password:PASS3
       }
     ];
-  
+   
+
     const errors = {
       uname: "invalid username",
       pass: "invalid password"

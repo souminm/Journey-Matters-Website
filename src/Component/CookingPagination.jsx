@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import ReactPaginate from "react-paginate";
+import { getData } from "../Services/BlogService";
 
 const CookingPagination = () => {
   const [userData, setUserData] = useState([]);
@@ -10,24 +10,19 @@ const CookingPagination = () => {
   const itemsPerPage = 3;
 
   useEffect(() => {
-    getFunnyData();
+    fetchData();
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(userData.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(userData.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, userData]);
-
-  //
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % userData.length;
     setItemOffset(newOffset);
   };
 
-  //
-
-  const getFunnyData = async () => {
-    await axios
-      .get("http://localhost:8080/api/get-listing")
+  const fetchData = async () => {
+    await getData()
       .then((res) => {
         const cookingData = res.data.data;
         const final = [];
@@ -67,7 +62,7 @@ const CookingPagination = () => {
                   <img
                     class="card-img-top"
                     src={generateFullLink(story.link)}
-                    alt="Entertainment"
+                    alt="Cooking"
                   ></img>
                   <h4 class="card-title">{story.title}</h4>
                   <a href={story.url} class="btn btn-primary">

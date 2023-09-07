@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import ReactPaginate from "react-paginate";
+import { getData } from "../Services/BlogService";
 
 const LifeStylePagination = () => {
   const [userData, setUserData] = useState([]);
@@ -10,7 +10,7 @@ const LifeStylePagination = () => {
   const itemsPerPage = 3;
 
   useEffect(() => {
-    getFunnyData();
+    fetchData();
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(userData.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(userData.length / itemsPerPage));
@@ -25,13 +25,12 @@ const LifeStylePagination = () => {
 
   //
 
-  const getFunnyData = async () => {
-    await axios
-      .get("http://localhost:8080/api/get-listing")
+  const fetchData = async () => {
+    await getData()
       .then((res) => {
-        const lifestyleData = res.data.data;
+        const cookingData = res.data.data;
         const final = [];
-        const stringify_Object = JSON.stringify(lifestyleData);
+        const stringify_Object = JSON.stringify(cookingData);
         var stringify = JSON.parse(stringify_Object);
         for (var i = 0; i < stringify.length; i++) {
           if (stringify[i]["category"] === "Lifestyle") {
@@ -67,7 +66,7 @@ const LifeStylePagination = () => {
                   <img
                     class="card-img-top"
                     src={generateFullLink(story.link)}
-                    alt="Entertainment"
+                    alt="Lifestyle"
                   ></img>
                   <h4 class="card-title">{story.title}</h4>
                   <a href={story.url} class="btn btn-primary">

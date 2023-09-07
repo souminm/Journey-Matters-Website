@@ -1,6 +1,6 @@
 import "./ImgSlider.css";
 import { useEffect, useState } from "react";
-import blogService from "../Services/BlogService";
+import { getData } from "../Services/BlogService";
 import { BiChevronsLeft, BiChevronsRight } from "react-icons/bi";
 
 const ImageSlider = () => {
@@ -11,8 +11,7 @@ const ImageSlider = () => {
   }, []);
 
   const fetchData = async () => {
-    await blogService
-      .getData()
+    await getData()
       .then((res) => {
         console.log(res, "result");
         const cookingData = res.data.data;

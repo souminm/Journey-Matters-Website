@@ -11,7 +11,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: rgba(0, 0, 0, 0.408);
 } 
 
@@ -45,12 +47,14 @@ td {
     font-size: 14px;
 }
 }
+ /* commenting for media queries to be responsive */
 /* th,
 td {
     border-bottom: 1px solid #dddddd;
     padding: 10px 20px;
     font-size: 14px;
 } */
+/* end */
 
 td img {
     height: 60px;

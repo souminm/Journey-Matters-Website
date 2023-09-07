@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ImageSlider from './ImageSlider';
+import {
+    FaYoutubeSquare,
+  } from "react-icons/fa";
 
 function Home({onChange}) {
     const [name,setName] = useState([""]);
@@ -18,6 +21,9 @@ function Home({onChange}) {
         let fullName="Journey Matters :)";
         setName(fullName.slice(0,name.length+1));
     }
+    function redirect(){
+        window.location.href="https://www.youtube.com/@journeymatters1701";
+    }
     
     return (
         <div className="HomeContainer">
@@ -29,7 +35,14 @@ function Home({onChange}) {
              <p>Trending videos</p>
             <ImageSlider></ImageSlider>
            <a href='https://www.youtube.com/@journeymatters1701'> <i class="ri-youtube-fill">Stay tuned for further more videos </i></a>
+           <button type = "button" className = "button-youtube" onClick={()=>{redirect()}}>
+                <span className='button_text'>Check us out!</span>
+                <span className='button_icon'>
+                <FaYoutubeSquare className="youtube-logo" />
+                </span>
+            </button>
             </div>
+          
         </div>
     );
 }

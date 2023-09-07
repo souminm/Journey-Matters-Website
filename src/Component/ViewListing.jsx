@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import blogService from "../Services/BlogService";
+import { getData ,deleteData } from "../Services/BlogService";
 import { useState, useEffect } from "react";
 import { useFormData } from "../Services/FormContext";
 import { ToastContainer, toast } from "react-toastify";
@@ -39,8 +39,7 @@ const ViewListing = () => {
   };
 
   const fetchData = async () => {
-    await blogService
-      .getData()
+    await getData()
       .then((res) => {
         const cookingData = res.data.data;
         const final = [];
@@ -63,13 +62,12 @@ const ViewListing = () => {
   };
 
   const deleteListing = async (id, e) => {
-    var response = await blogService.deleteData(id);
+    var response = await deleteData(id);
     console.log(id,'id');
     console.log(response,'response')
     if (response.data.success === true) {
-      document
-        .getElementById(id)
-        .parentElement.parentElement.parentElement.parentElement.remove();
+      const newUserData = (userData).filter((data) => data.id !== id)
+      setUserData(newUserData);
       toast.success("listing deleted successfully .");
     } else {
       toast.error("listing deletion failed .");
