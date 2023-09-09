@@ -7,9 +7,10 @@
     gap: 20px;
     height: 100vh;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    background-color: rgba(128, 128, 128, 0.701)
+    background-color: #f1f4f9;
   }
   
+ 
   input[type="text"],
   input[type="password"] {
     height: 25px;
@@ -37,7 +38,7 @@
   
   .login-form {
     /* background-color: rgba(0, 0, 0, 0.121); */
-    background-color: rgba(255, 255, 255, 0.284);
+    background-color: #7890b0;
     padding: 2rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 15px;

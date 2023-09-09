@@ -56,14 +56,9 @@
 
 body{
   height:100vh;
-  /* background-image: url(../public/Background-img.jpg); */
-  /* background-size:100% 100%; */
   background-size: 100% 100%;
   background-position: center;
-  color: white;
-  /* font-family: 'Josefin Sans', sans-serif;
-  font-family: 'Poppins', sans-serif;
-  box-sizing: border-box; */
+  color: black;
   font-family: 'Josefin Sans', sans-serif;
 font-family: 'Montserrat', sans-serif;
 font-family: 'Poppins', sans-serif;
@@ -100,7 +95,7 @@ font-family: 'Poppins', sans-serif;
 }
 
 a:hover{
-  color: purple;
+  color: #9BA4B5;
 }
 
 
@@ -111,17 +106,15 @@ a:hover{
   align-items: center;
   height: 700px;
   justify-content: center;
-  color: white;
+  color: black;
+  background-color:#EAF5FF;
   gap: 30px;
   
 }
 .HomeSlider{
   background-color:rgba(255, 240, 245, 0.201);
   color: black;
-  /* padding-top: 200px;
-  padding-left: 10px; */
   padding:10px;
-  /* position: ; */
   border-radius: 10px  ;
   border: 2px solid rgba(128, 128, 128, 0.942);
   
@@ -130,49 +123,10 @@ a:hover{
 
 .footer{
   text-align: center;
-  color: lightgoldenrodyellow;
+  color: #92a7bf;
+  background-color:  #1b314e;
 } 
 
-
-/* .pagination-container{
-  height: 400px;
-  display: flex;
-  gap: 4rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap:wrap;
- 
-
-}
-
-.pagination1{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.pagination1 button {
-  width: 40px;
-  height: 40px;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 16px;
-  margin: 0 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: transparent;
-  color: black;
-  border-color: #eee;
-}
-
-.pagination1 button.active {
-  font-weight: 900;
-  border-color: #101010;
-  background: rgba(128, 128, 128, 0.659);
-  color: #101010;
-} */
 /* react pagination  */
  .pagination-react{
   list-style: none;
@@ -198,7 +152,7 @@ a:hover{
  }
 
  .pagination-react .active{
-  background-color: #873e23;
+  background-color: #1b314e;
   color: white;
  }
 
@@ -213,7 +167,7 @@ a:hover{
 #listing-form{
   width: 700px;
   height: 400px;
-  background: rgba(0, 0, 0, 0.144);
+  background:#7890b0;
    padding: 2.3rem 0.5rem;
    border-radius: 0.3rem;
    border: 4px solid black;
@@ -238,6 +192,43 @@ a:hover{
   justify-content: space-between;
   color: black;
 }
+/* about module changes */
+.about-module{
+  height: 100vh;
+  padding: 5rem;
+  border-radius: 50%;
+ 
+}
+
+.about-module .card{
+  height: 58rem;
+  /* padding: 50px; */
+  background-color: #7890b0;
+}
+.about-module .card .card-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 55rem;
+  padding: 10px 10px 10px 10px;
+  gap: 20px;
+}
+.about-module .card-container a{
+  color: darkblue;
+}
+
+.about-module .card .abt-img{
+  height: 30rem;
+  padding: 0rem;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+}
+
+
+
 
 .update-listing{
   height:100vh;
@@ -257,44 +248,12 @@ a:hover{
   color: black;
 }
 
- /* .list-table{
-  width: 1000px;
-  border: 2px solid black;
-  background-color: crimson;
-  text-align: center;
- } */
-
 .actions{
   display: flex;
   justify-content: center;
   gap: 10px;
 }
 
-/* .footer{
-  margin-top: auto;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  
-} */
-
-/* @media screen and (min-width: 600px) {
-  :root {
-    --h1-font-size: 2.25rem;
-    --h2-font-size: 1.5rem;
-    --h3-font-size: 1.25rem;
-    --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
-  }
-} */
 html{
   font-size: 65.5%;
   scroll-behavior: smooth;
@@ -308,15 +267,11 @@ html{
 /* Image Section */
 
 .container{
-  /* margin: 0px;
-  padding: 0px;
-  box-sizing: border-box; */
   width: 100%;
-  /* min-height: 1vh; */
   height: 100vh;
   margin-top: 20px;
   margin-bottom: 10px;
-  background-color: #f7f7f785;
+  background-color: #7890b0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -345,12 +300,11 @@ align-self: normal;
 }
 
 .content-section .card img{
-  /* display: block; */
   width: 100%;
   height: auto; 
   border-radius: 5px;
 }
-.card:hover{
+.content-section .card:hover{
 transform: scale(1.12);
 z-index: 2;
 }
@@ -358,14 +312,14 @@ z-index: 2;
 .content-section .card b{
   margin: 15px 0px;
   font-size: 1.3rem;
-  color: #1662a1;
+  color: #7890b0;
   font-family: sans-serif;
 
 }
 .content-section .card a{
   display: inline-block;
   margin-top: auto;
-  background: green;
+  background: #ac7469;
   font-size: 16px;
   line-height: 1.5;
   padding: 0px 10px;
@@ -409,6 +363,7 @@ font-family: 'Poppins', sans-serif;
   background-color: rgba(0,0,0,0.08);
 }
 
+
 @media screen and (max-width:768px){
   .content-section{
     flex-direction: column;
@@ -430,6 +385,9 @@ font-family: 'Poppins', sans-serif;
   }
   .main-container{
     height: 110rem;
+    /* background-color: #f1f4f9; */
+    background-color: #9BA4B5;
+    /* background-color: #7890b0; */
   }
   .funny-container{
     height: 100rem;
@@ -467,9 +425,6 @@ font-family: 'Poppins', sans-serif;
     padding-top: 10px;
   }
 
-  /* .create-listing{
-    height: 100rem;
-  } */
   .create-listing #listing-form{
     height: 500px;
     width: 350px;
@@ -479,30 +434,7 @@ font-family: 'Poppins', sans-serif;
     height: 500px;
     width: 350px;
   }
-   /* .view-listing{
-    height: 100rem;
-   }
-
-  .view-listing .table-container{
-    height: 800px;
-    width: 350px;
-  }
-  .table-container .header-fixed{
-    height:350px;
-    width: 350px;
-  }
-
-  .header-fixed table{
-    height:150px;
-    width: 200px;
-  }
-   thead,tbody,td,tr{
-   width: 600px;
-   } */
-
-
   
-
 }
 
 @media 
@@ -514,7 +446,7 @@ only screen and (max-width: 760px),
     height: 200rem;
    }
     .footer{
-    color: purple;
+    color: black;
    
    }
 	table, thead, tbody, th, td, tr { 
@@ -522,12 +454,6 @@ only screen and (max-width: 760px),
 	}
   
 	.view-listing .pagination-react{
- 
-      /* list-style: none;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      align-items: center; */
       margin-bottom: 1rem;
        font-size: 1rem;
       gap:2px; 
@@ -575,5 +501,27 @@ only screen and (max-width: 760px),
 	td:nth-of-type(4):before { content: "Img Link"; }
 	td:nth-of-type(5):before { content: "Video Url"; }
 	td:nth-of-type(6):before { content: "Actions"; }
+
+ .about-module{
+  height: 200rem;
+  padding: 0rem;
+ }
+
+.about-module .card{
+  height: 75rem;
+}
+.about-module .card .card-container{
+  height: 70rem;
+  width: 400px;
+}
+  .about-module .card .abt-img{
+    height: 20rem;
+    padding-top: 10px;
+    border-radius: 50%;
+    width: 50%;
+  }
+  .about-module .card p{
+  text-align: left;
+  }
 
 }

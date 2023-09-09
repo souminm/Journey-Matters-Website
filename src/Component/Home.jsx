@@ -4,18 +4,15 @@ import {
     FaYoutubeSquare,
   } from "react-icons/fa";
 
-function Home({onChange}) {
+    function Home() {
     const [name,setName] = useState([""]);
+    
      useEffect(()=>{
         if(name.length!==18){
             setTimeout(getName,200);
         }
         
      },[name])
-
-     useEffect(()=>{
-        onChange()
-     },[onChange])
 
    function getName(){
         let fullName="Journey Matters :)";
@@ -34,15 +31,14 @@ function Home({onChange}) {
             <div className='HomeSlider'>
              <p>Trending videos</p>
             <ImageSlider></ImageSlider>
-           <a href='https://www.youtube.com/@journeymatters1701'> <i class="ri-youtube-fill">Stay tuned for further more videos </i></a>
-           <button type = "button" className = "button-youtube" onClick={()=>{redirect()}}>
+           {/* <a href='https://www.youtube.com/@journeymatters1701'> <i class="ri-youtube-fill">Stay tuned for further more videos </i></a> */}
+            </div>
+            <button type = "button" className = "button-youtube" onClick={()=>{redirect()}}>
                 <span className='button_text'>Check us out!</span>
                 <span className='button_icon'>
                 <FaYoutubeSquare className="youtube-logo" />
                 </span>
             </button>
-            </div>
-          
         </div>
     );
 }

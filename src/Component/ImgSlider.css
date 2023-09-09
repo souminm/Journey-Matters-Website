@@ -44,9 +44,6 @@
   }
 
   @media screen and (width <=600px){
-    /* .HomeContainer .HomeSlider{
-      width: 50%;
-    } */
     .slider{
       width: 100%;
       height: 300px;
@@ -58,6 +55,5 @@
     .slide.active .image{
       height: 300px;
       width: 300px;
-      /* text-align: center; */
     }
   }

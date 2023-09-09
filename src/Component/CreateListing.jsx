@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAuthData } from "../Services/AuthContext";
 function CreateListing(props) {
   const [formData, setFormData] = useState({
     category: "Entertainment",
@@ -10,11 +11,16 @@ function CreateListing(props) {
     url: "",
     title: "",
   });
+  const { authData } = useAuthData();
+  const [userName, setUsername] = useState("");
+
+  useEffect(() => {
+    setUsername(authData.username);
+  }, [authData.username]);
 
   //const [msg, setMsg] = useState("");
 
   const handleEventChange = (event) => {
-    //console.log(event.target);
     setFormData((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
@@ -29,24 +35,21 @@ function CreateListing(props) {
     );
     if (response.data.success === true) {
       //setMsg("Listing created Successfully");
-      toast.success("Listing created successfully !.")
+      toast.success("Listing created successfully !.");
     } else {
-    //  setMsg("Listing failed! .");
-      toast.success("Listing creation failed !.")
+      //  setMsg("Listing failed! .");
+      toast.success("Listing creation failed !.");
     }
 
     setFormData({ category: "Entertainment", link: "", url: "", title: "" });
-
-    // setTimeout(function () {
-    //   setMsg("");
-    // }, 2000);
   };
 
   return (
     <div className="create-listing">
-    <ToastContainer/>
+      <ToastContainer />
       <div>
         <header>
+          <h1 style={{ textTransform: "capitalize" }}>Welcome {userName} !</h1>
           <h1 id="title">Admin Listing form</h1>
           <p id="description"></p>
         </header>
@@ -55,7 +58,7 @@ function CreateListing(props) {
         <form id="listing-form" onSubmit={handleFormSubmit}>
           <div>
             <p>which listing has to be created?</p>
-            <label for="category" required>
+            <label htmlFor="category" required>
               Choose a category:
             </label>
             <select
@@ -76,7 +79,9 @@ function CreateListing(props) {
           </div>
           <div className="form-input">
             <label id="link-label">Link:</label>
-            <span class="input-group-addon">https://img.youtube.com/vi/</span>
+            <span className="input-group-addon">
+              https://img.youtube.com/vi/
+            </span>
             <input
               type="text"
               name="link"
@@ -87,7 +92,7 @@ function CreateListing(props) {
               className="form-input-size"
               required
             />
-            <span class="input-group-addon">/hqdefault.jpg</span>
+            <span className="input-group-addon">/hqdefault.jpg</span>
           </div>
           <div className="form-input">
             <label id="title-label">Title:</label>
@@ -116,14 +121,13 @@ function CreateListing(props) {
             />
           </div>
           <div className="form-input">
-            <button className = "btn btn-info"type="submit" id="submit">
+            <button className="btn btn-info" type="submit" id="submit">
               Submit
             </button>
           </div>
         </form>
       </div>
       <div>
-         {/* <p>{msg}</p> */}
         <Link to="/view-listing">
           <button className="btn btn-info">View Listing</button>
         </Link>

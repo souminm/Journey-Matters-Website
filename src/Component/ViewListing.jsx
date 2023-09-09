@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getData ,deleteData } from "../Services/BlogService";
+import { getData, deleteData } from "../Services/BlogService";
 import { useState, useEffect } from "react";
 import { useFormData } from "../Services/FormContext";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,17 +9,13 @@ import "./table.css";
 import ReactPaginate from "react-paginate";
 
 const ViewListing = () => {
-  // const navigate = useNavigate();
-  //const [userData, setUserData] = useState({});
   const { setFormData } = useFormData();
-
   //Pagination
   const [userData, setUserData] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 8;
-
   //
 
   const onUpdate = (item) => {
@@ -63,10 +59,10 @@ const ViewListing = () => {
 
   const deleteListing = async (id, e) => {
     var response = await deleteData(id);
-    console.log(id,'id');
-    console.log(response,'response')
+    console.log(id, "id");
+    console.log(response, "response");
     if (response.data.success === true) {
-      const newUserData = (userData).filter((data) => data.id !== id)
+      const newUserData = userData.filter((data) => data.id !== id);
       setUserData(newUserData);
       toast.success("listing deleted successfully .");
     } else {

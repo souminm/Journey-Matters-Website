@@ -1,10 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
 
 .table-container{
     padding: 10px 20px 10px 20px;
@@ -14,7 +8,8 @@
     font-family: 'Josefin Sans', sans-serif;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif;
-    background-color: rgba(0, 0, 0, 0.408);
+    /* background-color: rgba(0, 0, 0, 0.408); */
+    background-color: #7890b0;
 } 
 
 table {
@@ -26,14 +21,14 @@ table {
     max-height: 100vh;
     width: 100%;
     overflow: auto;
-    border: 1px solid #dddddd;
+    border: 1px solid#7890b0;
 }
 
 .header_fixed thead th {
     position: sticky;
     top: 0;
     background-color: black;
-    color: #e6e7e8;
+    color: #7890b0;
     font-size: 15px;
 }
 
@@ -47,14 +42,6 @@ td {
     font-size: 14px;
 }
 }
- /* commenting for media queries to be responsive */
-/* th,
-td {
-    border-bottom: 1px solid #dddddd;
-    padding: 10px 20px;
-    font-size: 14px;
-} */
-/* end */
 
 td img {
     height: 60px;

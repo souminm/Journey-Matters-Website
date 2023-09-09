@@ -13,7 +13,6 @@ const ImageSlider = () => {
   const fetchData = async () => {
     await getData()
       .then((res) => {
-        console.log(res, "result");
         const cookingData = res.data.data;
         const final = [];
         const stringify_Object = JSON.stringify(cookingData);
@@ -23,7 +22,6 @@ const ImageSlider = () => {
             final.push(stringify[i]);
           }
         }
-        console.log(final, "final Data");
         if (final.length !== 0) {
           setUserData(final);
         } else {
@@ -47,7 +45,6 @@ const ImageSlider = () => {
   if (!Array.isArray(itemsToDisplay) || itemsToDisplay.length <= 0) {
     return null;
   }
-  console.log(itemsToDisplay, "data");
   return (
     <section className="slider">
       <BiChevronsLeft className="left-arrow" onClick={prevSlide} />
@@ -64,7 +61,8 @@ const ImageSlider = () => {
 
                 <a href={slide.url}>
                   {" "}
-                  <img src={
+                  <img
+                    src={
                       "https://img.youtube.com/vi/" +
                       slide.link +
                       "/hqdefault.jpg"

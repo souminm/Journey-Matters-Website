@@ -1,18 +1,14 @@
-
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { update } from "../Services/BlogService";
 import { useFormData } from "../Services/FormContext";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UpdateListing(props) {
-const {formData,setFormData} = useFormData()
- // const [msg,setMsg] = useState('');
-
+  const { formData, setFormData } = useFormData();
 
   const handleEventChange = (event) => {
-    //console.log(event.target);
     setFormData((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
@@ -22,36 +18,24 @@ const {formData,setFormData} = useFormData()
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const response = await update({
-        "id" : formData._id,
-        "category" : formData.category,
-        "link": formData.link,
-        "url" : formData.url,
-        "title" : formData.title
-    })
-     if(response.data.success === true){
-     // setMsg('Listing updated Successfully')
-     toast.success("Listing updated successfully .")
-     }
-     else{
-     // setMsg('Listing failed! .');
-      toast.error("Listing updation failed .")
-     }
-
-    //  setFormData( {category: "Entertainment",
-    //  link: "",
-    //  url: "",
-    //  title: "",
-    //  id : id
-    //  })
-     
-    //  setTimeout(function(){
-    //    setMsg('');
-    //  },3000)
+      id: formData._id,
+      category: formData.category,
+      link: formData.link,
+      url: formData.url,
+      title: formData.title,
+    });
+    if (response.data.success === true) {
+      // setMsg('Listing updated Successfully')
+      toast.success("Listing updated successfully .");
+    } else {
+      // setMsg('Listing failed! .');
+      toast.error("Listing updation failed .");
+    }
   };
 
   return (
     <div className="update-listing">
-    <ToastContainer/>
+      <ToastContainer />
       <header>
         <h1 id="title">Update Admin Listing form</h1>
         <p id="description"></p>
@@ -121,20 +105,16 @@ const {formData,setFormData} = useFormData()
           />
         </div>
         <div className="form-input">
-          <button className ="btn btn-info"type="submit" id="submit">
+          <button className="btn btn-info" type="submit" id="submit">
             Submit
           </button>
         </div>
       </form>
-
-      {/* <p>{msg}</p> */}
-      <Link to ="/view-listing">
-      <button className="btn btn-danger">Prev</button>
-            </Link>
-     
+      <Link to="/view-listing">
+        <button className="btn btn-danger">Prev</button>
+      </Link>
     </div>
   );
 }
 
 export default UpdateListing;
-

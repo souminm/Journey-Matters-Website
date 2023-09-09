@@ -56,19 +56,19 @@ const Pagination = () => {
   }
 
   return (
-    <div class="container">
-      <div class="content-section">
+    <div className="container">
+      <div className="content-section">
         {currentItems && currentItems?.length > 0
           ? currentItems.map((story) => {
               return (
-                <div class="card">
+                <div className="card">
                   <img
-                    class="card-img-top"
+                    className="card-img-top"
                     src={generateFullLink(story.link)}
                     alt="Entertainment"
                   ></img>
-                  <h4 class="card-title">{story.title}</h4>
-                  <a href={story.url} class="btn btn-primary">
+                  <h4 className="card-title">{story.title}</h4>
+                  <a href={story.url} className="btn btn-primary">
                     Watch now on Youtube
                   </a>
                 </div>
