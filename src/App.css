@@ -509,10 +509,11 @@ only screen and (max-width: 760px),
 
 .about-module .card{
   height: 75rem;
+  margin: 0.5rem;
 }
 .about-module .card .card-container{
-  height: 70rem;
-  width: 400px;
+  height: 75rem;
+  width: 350px;
 }
   .about-module .card .abt-img{
     height: 20rem;
@@ -522,6 +523,9 @@ only screen and (max-width: 760px),
   }
   .about-module .card p{
   text-align: left;
+  height: 35rem;
+  width: 70%;
+  margin-left: 5rem;
   }
 
 }
